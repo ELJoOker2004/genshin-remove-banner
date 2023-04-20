@@ -109,7 +109,7 @@ int main()
             if (value2 != 7) {
                 Write<int>(LPVOID(address2), 7);
             }
-            Sleep(2*60*1000); // Sleep for 2 mins to avoid high CPU usage
+            Sleep(1000); // Sleep for 2 mins to avoid high CPU usage
         }
 
     }
