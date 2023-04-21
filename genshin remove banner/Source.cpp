@@ -108,8 +108,18 @@ int main()
             int value2 = Read<int>(LPVOID(address2));
             if (value2 != 7) {
                 Write<int>(LPVOID(address2), 7);
+
             }
-            Sleep(2*60*1000); // Sleep for 2 mins to avoid high CPU usage
+            DWORD procId = GetProcId(L"GenshinImpact.exe");
+            if (procId == 0) {
+                std::cout << "Genshin Impact has closed" << std::endl;
+                 DWORD procId = GetProcId(L"GenshinImpact.exe");
+            if (procId == 0) {
+                std::cout << "Genshin Impact has closed" << std::endl;
+                exit(0);
+            }
+            }
+            Sleep(1000); 
         }
 
     }
