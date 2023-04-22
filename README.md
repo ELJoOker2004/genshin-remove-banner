@@ -10,4 +10,4 @@ you need to enabled 'disable protection', restart the game, and re-inject before
 also cheack that mhyprot handler is closed and u run the app as admin
 
 <h1 align="center">Contributing</h1>
-<a href="https://github.com/YungSamzy">YungSamzy</a>
+<a href="https://github.com/YungSamzy">YungSamzy</a> readme
