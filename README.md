@@ -5,7 +5,6 @@ simple app to remove the banner in kebabi cheat for genshin impact
 <!-- PLEASE ADD THIS OMG -->
 run the app as admin
 make sure you have c++ redistributable installed
-
 you need to enabled 'disable protection', restart the game, and re-inject before you can use this program...
 ![image](https://user-images.githubusercontent.com/61764480/233733033-0e870558-9b50-4ff9-aefa-d53930a4b0b8.jpg)
 
