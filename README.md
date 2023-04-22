@@ -13,4 +13,4 @@ also cheack that mhyprot handler is closed
 
 <h1 align="center">Contributing</h1>
 <a href="https://github.com/YungSamzy">YungSamzy</a> readme
-<a href="https://github.com/soevielofficial"> added icon
+<a href="https://github.com/soevielofficial"> soevielofficial</a> added icon
