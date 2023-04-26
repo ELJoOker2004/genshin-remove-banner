@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <windows.h>
 #include <tlhelp32.h>
 #include <vector>
@@ -83,8 +83,75 @@ void SearchAndReplace(HANDLE hProcess, const std::vector<BYTE>& searchBytes, con
     }
 }
 
+// Function to check if a process is running
+bool IsProcessRunning(const wchar_t* processName) {
+    bool exists = false;
+    PROCESSENTRY32 entry;
+    entry.dwSize = sizeof(PROCESSENTRY32);
+
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+
+    if (Process32First(snapshot, &entry)) {
+        while (Process32Next(snapshot, &entry)) {
+            if (wcscmp(entry.szExeFile, processName) == 0) {
+                exists = true;
+                break;
+            }
+        }
+    }
+
+    CloseHandle(snapshot);
+    return exists;
+}
+
 int main()
 {
+    SetConsoleTitle(L"GENSHIN BANNER REMOVER BY ELJoOker#8401");
+    std::cout << "Made with love by ELJoOker#8401\n\n\n";
+    Sleep(2000);
+    // Get the current directory
+    char currentDirectory[MAX_PATH];
+    GetModuleFileNameA(NULL, currentDirectory, MAX_PATH);
+    std::string currentDirectoryStr(currentDirectory);
+    std::size_t found = currentDirectoryStr.find_last_of("\\/");
+    std::string path = currentDirectoryStr.substr(0, found + 1);
+
+    // Specify the name of the executable to run
+    std::string exeName = "injector.exe";
+
+    // Build the full path to the executable
+    std::string exePath = path + exeName;
+
+    // Start the process
+    STARTUPINFOA si;
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory(&pi, sizeof(pi));
+
+    if (CreateProcessA(NULL, const_cast<char*>(exePath.c_str()), NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))
+    {
+        std::cout << "Process started successfully.\n";
+        // Optionally, you can wait for the process to finish using WaitForSingleObject
+        // WaitForSingleObject(pi.hProcess, INFINITE);
+        CloseHandle(pi.hProcess);
+        CloseHandle(pi.hThread);
+    }
+    else
+    {
+        std::cerr << "Failed to start process. Error code: " << GetLastError() << "\n";
+        return 1;
+    }
+    // Process ID of the target process to attach to
+   // Name of the process to wait for
+    const wchar_t* processName = L"GenshinImpact.exe";
+    std::cout << "Waiting for process to start...\n";
+    // Wait for the process to start
+    while (!IsProcessRunning(processName)) {
+
+        Sleep(1000);
+    }
+
     // get the game's process id
     DWORD procId = GetProcId(L"GenshinImpact.exe");
 
@@ -119,7 +186,7 @@ int main()
                 exit(0);
             }
             }
-            Sleep(1000); 
+            Sleep(50); 
         }
 
     }
