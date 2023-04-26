@@ -104,9 +104,39 @@ bool IsProcessRunning(const wchar_t* processName) {
     return exists;
 }
 
+bool IsAdmin() {
+    BOOL isAdmin = FALSE;
+    SID_IDENTIFIER_AUTHORITY NtAuthority = SECURITY_NT_AUTHORITY;
+    PSID pAdministratorsGroup;
+
+    // Allocate memory for the SID
+    if (AllocateAndInitializeSid(&NtAuthority, 2, SECURITY_BUILTIN_DOMAIN_RID,
+        DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &pAdministratorsGroup)) {
+        // Check if the current process is a member of the Administrators group
+        if (!CheckTokenMembership(NULL, pAdministratorsGroup, &isAdmin)) {
+            isAdmin = FALSE;
+        }
+
+        // Free the allocated memory for the SID
+        FreeSid(pAdministratorsGroup);
+    }
+
+    return isAdmin != FALSE;
+}
+
 int main()
 {
+
+
     SetConsoleTitle(L"GENSHIN BANNER REMOVER BY ELJoOker#8401");
+
+    if (!IsAdmin()) {
+        std::cout << "Warning: Not running with admin privileges. please run as adminstartor to make it work." << std::endl;
+        Sleep(5000);
+        exit(0);
+    }
+    
+
     std::cout << "Made with love by ELJoOker#8401\n\n\n";
     Sleep(2000);
     // Get the current directory
