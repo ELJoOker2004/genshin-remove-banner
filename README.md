@@ -7,7 +7,7 @@ move app and all files with it (if exist) to the same injector folder and just r
 
 make sure you have c++ redistributable installed
 
-you need to enabled 'disable protection', restart the game, and re-inject before you can use this program...
+you need to enabled 'disable protection' (not required for version 1.5), restart the game, and re-inject before you can use this program...
 ![image](https://user-images.githubusercontent.com/61764480/233733033-0e870558-9b50-4ff9-aefa-d53930a4b0b8.jpg)
 
 also cheack that mhyprot handler is closed 
