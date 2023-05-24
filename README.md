@@ -1,6 +1,6 @@
 <h1 align="center">genshin remove banner</h1>
 
-simple app to remove the banner in kebabi cheat for genshin impact
+simple app to remove the banner in kebabi for genshin impact
 
 <!-- PLEASE ADD THIS OMG -->
 move app and all files with it (if exist) to the same injector folder and just run the app as admin and it will do the rest for you
