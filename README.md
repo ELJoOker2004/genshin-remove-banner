@@ -1,3 +1,5 @@
+archived cause it's not usefull anymore (kebabi dead)
+
 <h1 align="center">genshin remove banner</h1>
 
 simple app to remove the banner in kebabi for genshin impact
