@@ -1,4 +1,4 @@
-archived cause it's not usefull anymore (kebabi dead)
+<h2>archived cause it's not usefull anymore (kebabi dead)</h2>
 
 <h1 align="center">genshin remove banner</h1>
 
